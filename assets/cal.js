@@ -2,26 +2,42 @@
 class Calculator {
   // init the calculator
   constructor() {
+    let checkUni = 0;
     const display = document.querySelector(".calculator__display");
     const operator = document.querySelectorAll(".operator");
     const zeroStart = document.querySelector(".bigzero");
-    const clear = document.querySelector(".clear");
+    const clearC = document.querySelector(".clear");
+    const equal = document.querySelectorAll(".equal");
+    const dot = document.querySelectorAll(".dot");
     const numberListenser = document.querySelectorAll(".calculator__input");
+
+    calculator.init();
+  }
+  // initialization the calculator
+  init() {
     let displayVal = 0;
+    let firstInput = displayVal[0];
     display.innerHTML = displayVal;
+    calculator.listenEvent();
   }
-
-  //add function for lisenEvent "click"
+  //add function for lisen "click" event
   listenEvent() {
-    numberListenser;
-    return;
+    numberListenser.forEach((nlsner) => {
+      nlsner.addEventListener("click", calculator.handleClick());
+    });
   }
-  display() {
-    return;
+  // all the input add into displayVal as string
+  handleClick(nlsnerInfo) {
+    this.displayVal += numberListenser.innerHTML;
+    while (displayVal) {}
+    if (this.displayVal[this.displayVal.length - 1] === clearC.innerHTML) {
+      calculator.clearAll();
+    }
+    if (this.displayVal[this.displayVal.length - 1] === operator.innerHTML) {
+      calculator.method();
+    }
   }
-
-  //each time press the button
-  updateScreen(num) {
+  displayScreen() {
     return;
   }
   //run opeator
@@ -35,10 +51,8 @@ class Calculator {
     while (this.displayVal) return;
   }
   //reset to 0
-  clear() {
-    while (displayVal[displayVal.length - 1] === this.clear.innerHTML) {
-      this.displayVal = 0;
-    }
+  clearAll() {
+    calculator.init();
   }
 }
 window.onload = function () {
