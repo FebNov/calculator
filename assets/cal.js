@@ -3,6 +3,8 @@ class Calculator {
   // init the calculator
   constructor() {
     let checkUni = 0;
+    let firstNumber = 0;
+    let sign;
     const display = document.querySelector(".calculator__display");
     const operator = document.querySelectorAll(".operator");
     const zeroStart = document.querySelector(".bigzero");
@@ -29,26 +31,41 @@ class Calculator {
   // all the input add into displayVal as string
   handleClick(nlsnerInfo) {
     this.displayVal += numberListenser.innerHTML;
-    while (displayVal) {}
+    while (displayVal[0] === displayVal[1]) {
+      displayVal.pop();
+    }
     if (this.displayVal[this.displayVal.length - 1] === clearC.innerHTML) {
       calculator.clearAll();
     }
+    //havent consider dot
     if (this.displayVal[this.displayVal.length - 1] === operator.innerHTML) {
+
       calculator.method();
-    }
+    } else calculator.displayScreen();
   }
+
+  //display the string to to calculator display screen
   displayScreen() {
-    return;
+    display.innerHTML = displayVal;
   }
   //run opeator
   method() {
-    return;
+    calculator.uniOperator();
+    if (checkUni === 1) {
+        if (this.displayVal[this.displayVal.length - 1] === "+" || this.displayVal[this.displayVal.length - 1] === "-" || this.displayVal[this.displayVal.length - 1] === "*"|| this.displayVal[this.displayVal.length - 1] === "/") {
+            while (firstNumber === 0) firstNumber = displayVal;
+            displayVal= firstNumber 
+      }
+    }else 
   }
 
   //like "dot", only display once, or "operator" only work at last press
   uniOperator() {
-    let checkUni = 0;
-    while (this.displayVal) return;
+    while(checkUni===0){
+        sign = operator
+        checkUni ++;
+    }
+    return checkUni;
   }
   //reset to 0
   clearAll() {

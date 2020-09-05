@@ -3,34 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/assets/main.css" />
-    <script src="/assets/cal.js"></script>
   </head>
   <body>
     <div class="calculator">
       <div class="calculator__container">
-        <ul class="calculator--flexbox">
-          <li class="calculator__display"></li>
-          <li class="calculator__input clear">C</li>
-          <li class="calculator__input clear">-/+</li>
-          <li class="calculator__input operator">%</li>
-          <li class="calculator__input operator">/</li>
-          <li class="calculator__input">7</li>
-          <li class="calculator__input">8</li>
-          <li class="calculator__input">9</li>
-          <li class="calculator__input operator">*</li>
-          <li class="calculator__input">4</li>
-          <li class="calculator__input">5</li>
-          <li class="calculator__input">6</li>
-          <li class="calculator__input operator">-</li>
-          <li class="calculator__input">1</li>
-          <li class="calculator__input">2</li>
-          <li class="calculator__input">3</li>
-          <li class="calculator__input operator">+</li>
-          <li class="calculator__input bigzero">0</li>
-          <li class="calculator__input operator dot">.</li>
-          <li class="calculator__input operator equal">=</li>
-        </ul>
+        <div class="calculator__display">
+          <input class="screen" type="text" value="0" />
+        </div>
+        <div class="calculator__buttonContainer">
+          <div class="calculator__buttonRow">
+            <div class="calculator__input clear">C</div>
+            <div class="calculator__input operator">-/+</div>
+            <div class="calculator__input operator">%</div>
+            <div class="calculator__input operator">/</div>
+          </div>
+          <div class="calculator__buttonRow">
+            <div class="calculator__input number">7</div>
+            <div class="calculator__input number">8</div>
+            <div class="calculator__input number">9</div>
+            <div class="calculator__input operator">*</div>
+          </div>
+          <div class="calculator__buttonRow">
+            <div class="calculator__input number">4</div>
+            <div class="calculator__input number">5</div>
+            <div class="calculator__input number">6</div>
+            <div class="calculator__input operator">-</div>
+          </div>
+          <div class="calculator__buttonRow">
+            <div class="calculator__input number">1</div>
+            <div class="calculator__input number">2</div>
+            <div class="calculator__input number">3</div>
+            <div class="calculator__input operator">+</div>
+          </div>
+          <div class="calculator__buttonRow">
+            <div class="calculator__input zero">0</div>
+            <div class="calculator__input dot">.</div>
+            <div class="calculator__input operator">=</div>
+          </div>
+        </div>
       </div>
     </div>
+    <script src="/assets/cal.js"></script>
   </body>
 </html>
