@@ -16,32 +16,15 @@ var operatorLast = [];
 
 number.forEach((number) => {
   number.addEventListener("click", () => {
-    //console.log(display.value);
-    // number.classList.add("number--clicked");
-    // setTimeout(() => {
-    //   number.classList.remove("number--clicked");
-    // }, 100);
-    // console.log(methodOperator);
-    if (checkUniOperator != 0) {
-      // console.log("1");
-      // if (firstNumber === "0") {
-      //   firstNumber = display.value;
-      //   console.log("firstNumber is" + firstNumber);
-      // } else {
-      //   secondNumber = display.value;
-      //   console.log("2 loop firstNumber is" + firstNumber);
-      //   console.log("2 loop secondNumber is" + secondNumber);
-      // }
-      // console.log("2 loop firstNumber is" + firstNumber);
-      // secondNumber = display.value;
-      // console.log("2 loop secondNumber is" + secondNumber);
-
+    if (checkUniOperator === 1) {
       display.value = 0;
       display.value === "0"
         ? (display.value = number.innerHTML)
         : (display.value += number.innerHTML);
+      checkUniOperator++;
+    } else if (checkUniOperator > "1") {
+      display.value += number.innerHTML;
     } else {
-      // console.log("0");
       display.value === "0"
         ? (display.value = number.innerHTML)
         : (display.value += number.innerHTML);
