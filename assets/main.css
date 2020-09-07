@@ -58,9 +58,13 @@
 .number {
   background-color: blue;
 }
+.number--clicked {
+  background-color: wheat;
+}
 
 .operator,
-.clear {
+.stand,
+.equal {
   background-color: orange;
 }
 
