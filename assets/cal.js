@@ -1,77 +1,48 @@
 "use strict";
-class Calculator {
-  // init the calculator
-  constructor() {
-    let checkUni = 0;
-    let firstNumber = 0;
-    let sign;
-    const display = document.querySelector(".calculator__display");
-    const operator = document.querySelectorAll(".operator");
-    const zeroStart = document.querySelector(".bigzero");
-    const clearC = document.querySelector(".clear");
-    const equal = document.querySelectorAll(".equal");
-    const dot = document.querySelectorAll(".dot");
-    const numberListenser = document.querySelectorAll(".calculator__input");
 
-    calculator.init();
-  }
-  // initialization the calculator
-  init() {
-    let displayVal = 0;
-    let firstInput = displayVal[0];
-    display.innerHTML = displayVal;
-    calculator.listenEvent();
-  }
-  //add function for lisen "click" event
-  listenEvent() {
-    numberListenser.forEach((nlsner) => {
-      nlsner.addEventListener("click", calculator.handleClick());
-    });
-  }
-  // all the input add into displayVal as string
-  handleClick(nlsnerInfo) {
-    this.displayVal += numberListenser.innerHTML;
-    while (displayVal[0] === displayVal[1]) {
-      displayVal.pop();
+let checkUni = 0;
+let firstNumber = 0;
+const display = document.querySelector(".screen");
+const operator = document.querySelectorAll(".operator");
+const zeroStart = document.querySelector(".zero");
+const clearC = document.querySelector(".clear");
+const equal = document.querySelector(".equal");
+const dot = document.querySelectorAll(".dot");
+const number = document.querySelectorAll(".number");
+
+var operatorLast = [];
+
+number.forEach((number) => {
+  number.addEventListener("click", () => {
+    //console.log(display.value);
+    number.classList.add("number--clicked");
+    setTimeout(() => {
+      number.classList.remove("number--clicked");
+    }, 100);
+
+    if (document.querySelector("operator--clicked")) {
+      firstNumber = display.value;
+      console.log(firstNumber);
+      display = 0;
+      document
+        .querySelector("operator--clicked")
+        .classList.remove("operator--clicked");
     }
-    if (this.displayVal[this.displayVal.length - 1] === clearC.innerHTML) {
-      calculator.clearAll();
-    }
-    //havent consider dot
-    if (this.displayVal[this.displayVal.length - 1] === operator.innerHTML) {
+    display.value += number.innerHTML;
+  });
+});
+operator.forEach((operator) => {
+  operator.addEventListener("click", () => {
+    //console.log(display.value);
+    operator.classList.add("operator--clicked");
+    setTimeout(() => {
+      operator.classList.remove("operator--clicked");
+    }, 100);
+  });
+});
 
-      calculator.method();
-    } else calculator.displayScreen();
+dot.addEventListener("click", () => {
+  if (display.value.indexOf(".") === -1) {
+    display.value += dot.innerText;
   }
-
-  //display the string to to calculator display screen
-  displayScreen() {
-    display.innerHTML = displayVal;
-  }
-  //run opeator
-  method() {
-    calculator.uniOperator();
-    if (checkUni === 1) {
-        if (this.displayVal[this.displayVal.length - 1] === "+" || this.displayVal[this.displayVal.length - 1] === "-" || this.displayVal[this.displayVal.length - 1] === "*"|| this.displayVal[this.displayVal.length - 1] === "/") {
-            while (firstNumber === 0) firstNumber = displayVal;
-            displayVal= firstNumber 
-      }
-    }else 
-  }
-
-  //like "dot", only display once, or "operator" only work at last press
-  uniOperator() {
-    while(checkUni===0){
-        sign = operator
-        checkUni ++;
-    }
-    return checkUni;
-  }
-  //reset to 0
-  clearAll() {
-    calculator.init();
-  }
-}
-window.onload = function () {
-  const calculator = new Calculator();
-};
+});

@@ -62,6 +62,9 @@ $inputSize: 50px;
 }
 .number {
   background-color: $numberColor;
+  &--clicked {
+    background-color: wheat;
+  }
 }
 .operator,
 .clear {
