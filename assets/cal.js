@@ -12,8 +12,6 @@ const equal = document.querySelector(".equal");
 const dot = document.querySelector(".dot");
 const number = document.querySelectorAll(".number");
 
-var operatorLast = [];
-
 number.forEach((number) => {
   number.addEventListener("click", () => {
     if (checkUniOperator === 1) {
@@ -61,14 +59,14 @@ dot.addEventListener("click", () => {
 });
 
 equal.addEventListener("click", () => {
+  while (display.value === "520") {
+    display.value = "I Love SYD";
+  }
   if (firstNumber === 0) {
     firstNumber = display.value;
     console.log("if firstNumber =0 " + firstNumber);
   } else if (secondNumber === 0) {
     secondNumber = display.value;
-
-    console.log("if secondNumber =0 " + secondNumber);
-    // console.log("1");
     switch (methodOperator) {
       case "+":
         display.value = parseFloat(firstNumber) + parseFloat(secondNumber);
@@ -107,40 +105,36 @@ equal.addEventListener("click", () => {
   }
   methodOperator = undefined;
   checkUniOperator = 0;
+
   checkDot = 0;
+  display.value === `${firstNumber}.`
+    ? (display.value = 0)
+    : (display.value = firstNumber);
 });
 
 operator.forEach((operator) => {
   operator.addEventListener("click", () => {
-    //console.log(display.value);
-    // console.log("3");
     if (checkUniOperator === 0) {
       switch (operator.innerHTML) {
         case "+":
           firstNumber = display.value;
-          console.log("1 loop firstNumber is" + firstNumber);
           checkUniOperator += 1;
           methodOperator = "+";
-          // console.log("+++");
-          // console.log(checkUniOperator);
           break;
         case "-":
           firstNumber = display.value;
           checkUniOperator += 1;
           methodOperator = "-";
-
           break;
         case "*":
           firstNumber = display.value;
           checkUniOperator += 1;
           methodOperator = "*";
-
           break;
         case "/":
           firstNumber = display.value;
           checkUniOperator += 1;
           methodOperator = "/";
-
           break;
       }
     } // if press twice operator, only work once
@@ -149,38 +143,30 @@ operator.forEach((operator) => {
         case "+":
           if (secondNumber === "0") {
             secondNumber = display.value;
+            console.log(secondNumber);
           } else {
             display.value = parseFloat(firstNumber) + parseFloat(secondNumber);
             firstNumber = display.value;
-            checkUniOperator = 0;
-            secondNumber = 0;
           }
-          // console.log("2 loop secondirstNumber is" + secondtNumber);
-          // checkUniOperator = 0;
+          checkUniOperator = 0;
+          secondNumber = 0;
           methodOperator = "+";
-          // console.log(checkUniOperator);
-          // console.log("2");
-          break;
         case "-":
           secondNumber = display.value;
-          // checkUniOperator = 0;
+
           methodOperator = "-";
           break;
         case "*":
           secondNumber = display.value;
-          // checkUniOperator = 0;
+
           methodOperator = "*";
           break;
         case "/":
           secondNumber = display.value;
-          // checkUniOperator = 0;
+
           methodOperator = "/";
           break;
       }
     }
-    // operator.classList.add("operator--clicked");
-    // setTimeout(() => {
-    //   operator.classList.remove("operator--clicked");
-    // }, 100);
   });
 });
